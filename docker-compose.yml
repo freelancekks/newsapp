@@ -8,6 +8,8 @@ services:
       - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=prod
+      - NEWS_GUARDIAN_API_KEY=24ee103c-b6bd-499f-9456-f18e0c85293e
+      - NEWS_NYT_API_KEY=AGn969K1z9yoWAR6nbtvb0TEVXIOmRnM
 
   frontend:
     image: freelancekks/news-aggregator-frontend:latest
