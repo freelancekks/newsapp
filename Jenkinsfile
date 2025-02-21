@@ -50,10 +50,13 @@ pipeline {
 
         stage('Push to Docker Hub') {
             steps {
-                withDockerRegistry([credentialsId: 'docker-hub-credentials', url: '']) {
-                    sh 'docker push $DOCKER_REGISTRY/$DOCKER_IMAGE_BACKEND:latest'
-                    sh 'docker push $DOCKER_REGISTRY/$DOCKER_IMAGE_FRONTEND:latest'
+                script {
+                    sh 'docker login -u freelancekks -p Kapil@1994'
+                    // withCredentials([usernamePassword(credentialsId: 'dockerhub_id', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                    // }
                 }
+                sh 'docker push $DOCKER_REGISTRY/$DOCKER_IMAGE_BACKEND:latest'
+                sh 'docker push $DOCKER_REGISTRY/$DOCKER_IMAGE_FRONTEND:latest'
             }
         }
 
