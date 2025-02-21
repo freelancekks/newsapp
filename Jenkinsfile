@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE_BACKEND = "newsaggegator"
+        DOCKER_IMAGE_BACKEND = "newsaggregator"
         DOCKER_IMAGE_FRONTEND = "news-aggregator-frontend"
         DOCKER_REGISTRY = "freelancekks"
     }
