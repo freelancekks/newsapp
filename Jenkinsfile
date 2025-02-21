@@ -10,9 +10,23 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                sh 'git clone https://github.com/freelancekks/newsaggregator.git backend'
-                sh 'git clone https://github.com/freelancekks/news-aggregator-frontend.git frontend'
+                // sh 'git clone https://github.com/freelancekks/newsaggregator.git backend'
+                // sh 'git clone https://github.com/freelancekks/news-aggregator-frontend.git frontend'
+                script {
+                    // Delete the backend directory if it exists
+                    if (fileExists('backend')) {
+                        sh 'rm -rf backend'
+                    }
+                    // Clone the backend repository
+                    sh 'git clone https://github.com/freelancekks/newsaggregator.git backend'
+
+                    if (fileExists('frontend')) {
+                        sh 'rm -rf frontend'
+                    }
+                    sh 'git clone https://github.com/freelancekks/news-aggregator-frontend.git frontend'
+                }
             }
+            
         }
 
         stage('Build Backend') {
